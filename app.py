@@ -15,13 +15,13 @@ header = {
 
 app = Flask(__name__, static_folder="./build", static_url_path="/")
 CORS(app)
-
 @app.route("/validation-key.txt")
+
 def serve_validation_file():
-    return Response(
-        "ebcfc01f76ba11ce6fb8ee0964c98b7b14f3a47f49c0e8255bb2e44f15f260e6bd64fd3fb2ffbb82e6c8be8ffc647a4a5d4f86263188193d5c03f66f80314bcb",
-        mimetype="text/plain"
-    )
+    content = "ebcfc01f76ba11ce6fb8ee0964c98b7b14f3a47f49c0e8255bb2e44f15f260e6bd64fd3fb2ffbb82e6c8be8ffc647a4a5d4f86263188193d5c03f66f80314bcb"
+    resp = Response(content)
+    resp.headers["Content-Type"] = "text/plain"
+    return resp
     
 # Example API endpoint
 @app.route("/api/hello")
@@ -174,6 +174,7 @@ def get_user_info():
 if __name__ == "__main__":
 
     app.run(host="0.0.0.0", port=5000, debug=True)
+
 
 
 
