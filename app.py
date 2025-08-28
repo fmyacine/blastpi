@@ -16,6 +16,14 @@ header = {
 app = Flask(__name__, static_folder="./build", static_url_path="/")
 CORS(app)
 
+@app.route("/validation-key.txt")
+def serve_validation_file():
+    return send_from_directory(
+        directory=os.getcwd(), 
+        path="validation-key.txt", 
+        mimetype="text/plain"
+    )
+
 # Example API endpoint
 @app.route("/api/hello")
 def hello():
@@ -165,4 +173,5 @@ def get_user_info():
 
 
 if __name__ == "__main__":
+
     app.run(host="0.0.0.0", port=5000, debug=True)
