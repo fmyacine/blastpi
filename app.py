@@ -17,16 +17,6 @@ app = Flask(__name__, static_folder="./build", static_url_path="/")
 CORS(app)
 @app.route("/validation-key.txt")
 
-def serve_validation_file():
-    content = "8c580519aaebabcdb28403de7924b2c40955a3a298ee84f66d386d7dbe47f3e4857a6727dbb1be4299e082717154e518753d133a5fdecd6511e0a513b7e3392f"
-    resp = Response(content)
-    resp.headers["Content-Type"] = "text/plain"
-    return resp
-    
-# Example API endpoint
-@app.route("/api/hello")
-def hello():
-    return jsonify(message="Hello from Flask API!")
 
 # Serve React app only on root "/"
 @app.route("/")
